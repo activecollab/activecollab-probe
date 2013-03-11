@@ -15,4 +15,4 @@ Each test can have one of the three outputs:
 2. <span style="color: orange">**Warning** (orange)</span> - test did not pass, but activeCollab does not require that environment option to run. Warnings are usually throw in case of missing extensions that are optional, but good to have, or in cases in early warning about deprecated functionality.
 3. <span style="color: red">**Error** (red)</span> - requirement is not met and you will not be able to run activeCollab until you reconfigure your environment to support it. Errors are throw in case of missing extensions, or environment settings that will break activeCollab (like some unsupported opcode cache extensions).
 
-That's it.
+That's it. If you have any questions or need our assistance, please get in touch: [https://www.activecollab.com/contact.html](https://www.activecollab.com/contact.html).
