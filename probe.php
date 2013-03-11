@@ -1,20 +1,39 @@
 <?php
 
-  // ---------------------------------------------------
-  //  Database settings
-  // ---------------------------------------------------
-  
-  define('DB_HOST', 'localhost');
-  define('DB_USER', '');
-  define('DB_PASS', '');
-  define('DB_NAME', '');
+  /**
+   * activeCollab Probe
+   *
+   * Copyright (c) 2012 A51 d.o.o.
+   *
+   * Permission is hereby granted, free of charge, to any person obtaining a copy of this 
+   * software and associated documentation files (the "Software"), to deal in the Software 
+   * without restriction, including without limitation the rights to use, copy, modify, 
+   * merge, publish, distribute, sublicense, and/or sell copies of the Software, and to 
+   * permit persons to whom the Software is furnished to do so, subject to the following 
+   * conditions:
+   *
+   * The above copyright notice and this permission notice shall be included in all copies 
+   * or substantial portions of the Software.
+   *
+   * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+   * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+   * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
+   * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+   * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+   * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+   */
 
-  // ---------------------------------------------------
-  //  Resources
-  // ---------------------------------------------------
+  // -- Please provide valid database connection parameters ------------------------------
   
-  define('PROBE_VERSION', '3.0.4');
-  define('PROBE_FOR', 'activeCollab 3.1');
+  define('DB_HOST', 'localhost'); // Address of your MySQL server (usually localhost)
+  define('DB_USER', ''); // Username that is used to connect to the server
+  define('DB_PASS', ''); // User's password
+  define('DB_NAME', ''); // Name of the database you are connecting to
+  
+  // -- No need to change anything bellow this line --------------------------------------
+  
+  define('PROBE_VERSION', '3.2');
+  define('PROBE_FOR', 'activeCollab 3.2');
 
   define('STATUS_OK', 'ok');
   define('STATUS_WARNING', 'warning');
@@ -237,6 +256,7 @@
       'mbstring' => 'MultiByte String is used for work with Unicode. Without it, system may not split words and string properly and you can have weird question mark characters in Recent Activities for example', 
       'iconv' => 'Iconv is used for character set conversion. Without it, system is a bit slower when converting different character set', 
       'imap' => 'IMAP is used to connect to POP3 and IMAP servers. Without it, Incoming Mail module will not work',
+      // SVN extension ommited, to avoid confusion
     );
 
     foreach($recommended_extensions as $recommended_extension => $recommended_extension_desc) {
