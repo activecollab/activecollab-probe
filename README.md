@@ -1,6 +1,6 @@
 # activeCollab Probe
 
-Use ``probe.php`` script to check if your system can run [activeCollab](https://www.activecollab.com) or not. 
+Use ``probe.php`` script to check if your system can run [activeCollab](https://www.activecollab.com/index.html) or not. 
 
 Instructions:
 
