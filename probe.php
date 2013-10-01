@@ -32,8 +32,8 @@
   
   // -- No need to change anything bellow this line --------------------------------------
   
-  define('PROBE_VERSION', '3.2');
-  define('PROBE_FOR', 'activeCollab 3.2 and Newer');
+  define('PROBE_VERSION', '3.3');
+  define('PROBE_FOR', 'activeCollab 3.3 and Newer');
 
   define('STATUS_OK', 'ok');
   define('STATUS_WARNING', 'warning');
@@ -228,7 +228,7 @@
   function validate_extensions(&$results) {
     $ok = true;
     
-    $required_extensions = array('mysql', 'pcre', 'tokenizer', 'ctype', 'session', 'json', 'xml', 'dom', 'zip');
+    $required_extensions = array('mysql', 'pcre', 'tokenizer', 'ctype', 'session', 'json', 'xml', 'dom', 'phar');
     
     foreach($required_extensions as $required_extension) {
       if(extension_loaded($required_extension)) {
@@ -257,6 +257,7 @@
       'curl' => 'cURL is used to support various network tasks. Please refer to <a href="http://www.php.net/manual/en/curl.installation.php">this</a> page for installation instructions', 
       'iconv' => 'Iconv is used for character set conversion. Without it, system is a bit slower when converting different character set. Please refer to <a href="http://www.php.net/manual/en/iconv.installation.php">this</a> page for installation instructions', 
       'imap' => 'IMAP is used to connect to POP3 and IMAP servers. Without it, Incoming Mail module will not work. Please refer to <a href="http://www.php.net/manual/en/imap.installation.php">this</a> page for installation instructions', 
+      'zlib' => 'ZLIB is used to read and write gzip (.gz) compressed files', 
       // SVN extension ommited, to avoid confusion
     );
 
