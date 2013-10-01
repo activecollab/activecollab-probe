@@ -33,7 +33,7 @@
   // -- No need to change anything bellow this line --------------------------------------
   
   define('PROBE_VERSION', '3.2');
-  define('PROBE_FOR', 'activeCollab 3.2');
+  define('PROBE_FOR', 'activeCollab 3.2 and Newer');
 
   define('STATUS_OK', 'ok');
   define('STATUS_WARNING', 'warning');
@@ -459,7 +459,13 @@
 <?php } // if ?>
 <?php } // if ?>
     </div>
-    
-    <p id="footer">&copy;2007&dash;<?php echo date('Y') ?>. <a href="http://www.a51dev.com">A51 doo</a>, makers of <a href="http://www.activecollab.com/">activeCollab</a>.</p>
+<?php
+
+  if(function_exists('date_default_timezone_set')) {
+    date_default_timezone_set('GMT');
+  } // if
+
+?>
+    <p id="footer">&copy;2007&dash;<?php echo date('Y') ?>. <a href="http://www.a51dev.com">A51 doo</a>, makers of <a href="https://www.activecollab.com/index.html">activeCollab</a>.</p>
   </body>
 </html>
