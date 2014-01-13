@@ -32,8 +32,8 @@
   
   // -- No need to change anything bellow this line --------------------------------------
   
-  define('PROBE_VERSION', '3.3');
-  define('PROBE_FOR', 'activeCollab 3.3 and Newer');
+  define('PROBE_VERSION', '4.2');
+  define('PROBE_FOR', 'activeCollab 4.2 and Newer');
 
   define('STATUS_OK', 'ok');
   define('STATUS_WARNING', 'warning');
@@ -192,8 +192,8 @@
    * @param array $result
    */
   function validate_php(&$results) {
-    if(version_compare(PHP_VERSION, '5.3') == -1) {
-      $results[] = new TestResult('Minimum PHP version required in order to run activeCollab is PHP 5.3. Your PHP version: ' . PHP_VERSION, STATUS_ERROR);
+    if(version_compare(PHP_VERSION, '5.3.3') == -1) {
+      $results[] = new TestResult('Minimum PHP version required in order to run activeCollab is PHP 5.3.3. Your PHP version: ' . PHP_VERSION, STATUS_ERROR);
       return false;
     } else {
       $results[] = new TestResult('Your PHP version is ' . PHP_VERSION, STATUS_OK);
