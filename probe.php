@@ -30,7 +30,7 @@
   define('DB_PASS', ''); // User's password
   define('DB_NAME', ''); // Name of the database you are connecting to
   
-  // -- No need to change anything bellow this line --------------------------------------
+  // -- No need to change anything below this line --------------------------------------
   
   define('PROBE_VERSION', '4.2');
   define('PROBE_FOR', 'activeCollab 4.2 and Newer');
