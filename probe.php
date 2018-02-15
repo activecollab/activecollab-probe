@@ -381,7 +381,7 @@ class TestResult
                 return [
                     'MariaDB',
                     $min_mariadb_version,
-                    version_compare($version, $min_mariadb_version) >= 0,
+                    strpos($version, $min_mariadb_version) !== false || version_compare($version, $min_mariadb_version) >= 0,
                 ];
             } else {
                 return [
