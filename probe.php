@@ -23,6 +23,11 @@
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+if (!empty($_GET) && array_key_exists('phpinfo', $_GET)) {
+    phpinfo();
+    die();
+}
+
 // -- Please provide valid database connection parameters ------------------------------
 
 define('DB_HOST', ''); // Address of your MySQL server (usually localhost)
@@ -197,15 +202,15 @@ class TestResult
         function validate_php(&$results)
         {
             if (version_compare(PHP_VERSION, '7.1', '<')) {
-                $results[] = new TestResult('Minimum PHP version required in order to run ActiveCollab is PHP 7.1. Your PHP version: ' . PHP_VERSION, STATUS_ERROR);
+                $results[] = new TestResult('Minimum PHP version required in order to run ActiveCollab is PHP 7.1. Your PHP version: ' . PHP_VERSION . ' (<a href="probe.php?phpinfo" target="_blank">show info</a>)', STATUS_ERROR);
 
                 return false;
             } elseif (version_compare(PHP_VERSION, '7.2', '>=')) {
-                $results[] = new TestResult('ActiveCollab is currently not compatible with PHP 7.2. Your PHP version: ' . PHP_VERSION, STATUS_ERROR);
+                $results[] = new TestResult('ActiveCollab is currently not compatible with PHP 7.2. Your PHP version: ' . PHP_VERSION . ' (<a href="probe.php?phpinfo" target="_blank">show info</a>)', STATUS_ERROR);
 
                 return false;
             } else {
-                $results[] = new TestResult('Your PHP version is ' . PHP_VERSION, STATUS_OK);
+                $results[] = new TestResult('Your PHP version is ' . PHP_VERSION . ' (<a href="probe.php?phpinfo" target="_blank">show info</a>)', STATUS_OK);
 
                 return true;
             }
