@@ -11,9 +11,9 @@ Use ``probe.php`` script to check if your system can run [ActiveCollab](https://
 
 Each test can have one of the three outputs:
 
-1. <span style="color: green">**OK** (green)</span> - requirement is met.
-1. <span style="color: orange">**Warning** (orange)</span> - test did not pass, but ActiveCollab does not require that environment option to run. Warnings are usually throw in case of missing extensions that are optional, but good to have, or in cases in early warning about deprecated functionality.
-1. <span style="color: red">**Error** (red)</span> - requirement is not met and you will not be able to run ActiveCollab until you reconfigure your environment to support it. Errors are throw in case of missing extensions, or environment settings that will break ActiveCollab (like some unsupported opcode cache extensions).
+1. **OK** (![#008000](https://placehold.it/15/008000/000000?text=+) green) - requirement is met.
+1. **Warning** (![#FFA500](https://placehold.it/15/FFA500/000000?text=+) orange) - test did not pass, but ActiveCollab does not require that environment option to run. Warnings are usually throw in case of missing extensions that are optional, but good to have, or in cases in early warning about deprecated functionality.
+1. **Error** (![#FF0000](https://placehold.it/15/FF0000/000000?text=+) red) - requirement is not met and you will not be able to run ActiveCollab until you reconfigure your environment to support it. Errors are throw in case of missing extensions, or environment settings that will break ActiveCollab (like some unsupported opcode cache extensions).
 
 That's it!
 
