@@ -19,7 +19,7 @@ That's it!
 
 ## Remove when Done
 
-When you are done, don't forget to remove the script from your server. This is a debugging type of software, that may show too much info about your platform to someone who should not be available to access that data, so it's highly recommended that you remove it from production server as soon as complete a task at hand (installing or troubleshooting ActiveCollab).
+When you are done, don't forget to remove the script from your server. This is a debugging type of software, that may show too much info about your platform to someone who should not be able to access that data. Because of that, it's highly recommended that you remove it from production server as soon as you complete a task at hand (installing or troubleshooting ActiveCollab).
 
 ## ActiveCollab Support
 
