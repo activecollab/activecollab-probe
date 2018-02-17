@@ -46,13 +46,26 @@ define('STATUS_ERROR', 'error');
 
 class TestResult
 {
-    public $message;
-    public $status;
+    private $message;
+    private $status;
+    private $details;
 
-    function __construct($message, $status = STATUS_OK)
+    function __construct($message, $status = STATUS_OK, $details = '')
     {
         $this->message = $message;
         $this->status = $status;
+        $this->details = $details;
+    }
+
+    public function render()
+    {
+        $html = '<li class="' . $this->status . '"><span class="status">' . $this->status . '</span> &mdash; ' . $this->message;
+        if ($this->details) {
+            $html .= ' <span class="details">' . $this->details . '</span>';
+        }
+        $html .= '</li>';
+
+        print $html;
     }
 }
 
@@ -295,9 +308,16 @@ class TestResult
 
             foreach ($recommended_extensions as $recommended_extension => $recommended_extension_desc) {
                 if (extension_loaded($recommended_extension)) {
-                    $results[] = new TestResult("Recommended extension <span style=\"color: orange\">$recommended_extension</span> found", STATUS_OK);
+                    $results[] = new TestResult(
+                        "Recommended extension <span style=\"color: orange\">$recommended_extension</span> found",
+                        STATUS_OK
+                    );
                 } else {
-                    $results[] = new TestResult("Extension <span style=\"color: orange\">$recommended_extension</span> was not found. <span class=\"details\">$recommended_extension_desc</span>", STATUS_WARNING);
+                    $results[] = new TestResult(
+                        "Extension <span style=\"color: orange\">$recommended_extension</span> was not found",
+                        STATUS_WARNING,
+                        $recommended_extension_desc
+                    );
                 }
             }
 
@@ -472,7 +492,7 @@ class TestResult
         $extensions_ok = validate_extensions($results);
 
         foreach ($results as $result) {
-            print '<li class="' . $result->status . '"><span class="status">' . $result->status . '</span> &mdash; ' . $result->message . '</li>';
+            $result->render();
         }
 
         ?>
@@ -506,7 +526,11 @@ class TestResult
                     if (check_is_database_empty($link)) {
                         $results[] = new TestResult('Database is empty');
                     } else {
-                        $results[] = new TestResult('Database is not empty <span class="details">Empty database is required if your installing a fresh copy of ActiveCollab. Database not being empty is OK if you are upgrading</span>', STATUS_WARNING);
+                        $results[] = new TestResult(
+                            'Database is not empty',
+                            STATUS_WARNING,
+                            'Empty database is required if your installing a fresh copy of ActiveCollab. Database not being empty is OK if you are upgrading'
+                        );
                     }
 
                     if (check_have_inno($link)) {
@@ -543,7 +567,7 @@ class TestResult
             // ---------------------------------------------------
 
             foreach ($results as $result) {
-                print '<li class="' . $result->status . '"><span class="status">' . $result->status . '</span> &mdash; ' . $result->message . '</li>';
+                $result->render();
             }
 
             ?>
