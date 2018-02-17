@@ -131,19 +131,19 @@ class TestResult
             text-align: left;
         }
 
-        .ok span, .warning span, .error span {
+        .ok span.status, .warning span.status, .error span.status {
             font-weight: bolder;
         }
 
-        .ok span {
+        .ok span.status {
             color: green;
         }
 
-        .warning span {
+        .warning span.status {
             color: orange;
         }
 
-        .error span {
+        .error span.status {
             color: red;
         }
 
@@ -472,7 +472,7 @@ class TestResult
         $extensions_ok = validate_extensions($results);
 
         foreach ($results as $result) {
-            print '<li class="' . $result->status . '"><span>' . $result->status . '</span> &mdash; ' . $result->message . '</li>';
+            print '<li class="' . $result->status . '"><span class="status">' . $result->status . '</span> &mdash; ' . $result->message . '</li>';
         }
 
         ?>
@@ -506,8 +506,7 @@ class TestResult
                     if (check_is_database_empty($link)) {
                         $results[] = new TestResult('Database is empty');
                     } else {
-                        $results[] = new TestResult('Database is not empty', STATUS_ERROR);
-                        $mysql_ok = false;
+                        $results[] = new TestResult('Database is not empty <span class="details">Empty database is required if your installing a fresh copy of ActiveCollab. Database not being empty is OK if you are upgrading</span>', STATUS_WARNING);
                     }
 
                     if (check_have_inno($link)) {
@@ -544,7 +543,7 @@ class TestResult
             // ---------------------------------------------------
 
             foreach ($results as $result) {
-                print '<li class="' . $result->status . '"><span>' . $result->status . '</span> &mdash; ' . $result->message . '</li>';
+                print '<li class="' . $result->status . '"><span class="status">' . $result->status . '</span> &mdash; ' . $result->message . '</li>';
             }
 
             ?>
