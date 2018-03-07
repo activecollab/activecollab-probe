@@ -189,7 +189,7 @@ class TestResult
 <body>
 <div id="wrapper">
     <h1>probe.php</h1>
-    <p style="padding: 16px 0; text-align: center; color: #666;">This simple utility will help you check if your server environment can run ActiveCollab. Grab the latest version on <a href="https://github.com/activecollab/activecollab-probe" target="_blank">GitHab</a>.</p>
+    <p style="padding: 16px 0; text-align: center; color: #666;">This simple utility will help you check if your server environment can run ActiveCollab. Grab the latest version on <a href="https://github.com/activecollab/activecollab-probe" target="_blank">GitHub</a>.</p>
     <dl>
         <dt>Probe Version:</dt>
         <dd><?php echo PROBE_VERSION ?></dd>
