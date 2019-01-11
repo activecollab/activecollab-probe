@@ -38,7 +38,7 @@ define('DB_NAME', ''); // Name of the database you are connecting to
 // -- No need to change anything below this line --------------------------------------
 
 define('PROBE_VERSION', '5.14');
-define('PROBE_FOR', 'ActiveCollab 5.14 and newer');
+define('PROBE_FOR', 'ActiveCollab 5.14, 6.0 and newer');
 
 define('STATUS_OK', 'ok');
 define('STATUS_WARNING', 'warning');
