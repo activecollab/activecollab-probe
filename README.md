@@ -1,6 +1,11 @@
 # ActiveCollab Probe
 
-Use ``probe.php`` script to check if your system can run [ActiveCollab](https://www.activecollab.com/index.html) or not. 
+Use ``probe.php`` script to check if your system can run [ActiveCollab](https://www.activecollab.com/index.html) or not.
+
+Supported versions:
+
+* ActiveCollab 5.14 and 5.15
+* ActiveCollab 6 and newer
 
 ## Instructions
 
