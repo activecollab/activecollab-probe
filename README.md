@@ -10,7 +10,7 @@ Supported versions:
 ## Instructions
 
 1. Download latest ``probe.php`` from GitHub, 
-1. Open ``probe.php`` using your favorite text editor and set database connection parameters. ``DB_HOST`` is your MySQL hostname, ``DB_USER`` is MySQL account that you will be useding to connect to the server, ``DB_PASS`` is account password, and ``DB_NAME`` is the name of database that you plan to use, 
+1. Open ``probe.php`` using your favorite text editor and set database connection parameters. ``DB_HOST`` is your MySQL hostname, ``DB_USER`` is MySQL account that you will be using to connect to the server, ``DB_PASS`` is account password, and ``DB_NAME`` is the name of database that you plan to use, 
 1. Upload it to the server where you plan to host ActiveCollab, 
 1. Visit ``probe.php`` using your browser. Script will run the test and show you the results.
 
@@ -24,7 +24,7 @@ That's it!
 
 ## Remove when Done
 
-When you are done, don't forget to remove the script from your server. This is a debugging type of software, that may show too much info about your platform to someone who should not be able to access that data. Because of that, it's highly recommended that you remove it from production server as soon as you complete a task at hand (installing or troubleshooting ActiveCollab).
+When you are done, don't forget to remove the script from your server. This is a debugging type of software that may show too much info about your platform to someone who should not be able to access that data. Because of that, it's highly recommended that you remove it from production server as soon as you complete a task at hand (installing or troubleshooting ActiveCollab).
 
 ## ActiveCollab Support
 
