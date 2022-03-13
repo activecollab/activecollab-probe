@@ -6,6 +6,8 @@ Supported versions:
 
 * ActiveCollab 7.3 and newer
 
+Detailed documentation on system's requirements is available [here](https://activecollab.com/help/books/self-hosted-activecollab/requirements).
+
 ## Instructions
 
 1. Download latest ``probe.php`` from GitHub, 
