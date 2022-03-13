@@ -16,9 +16,9 @@ Supported versions:
 
 Each test can have one of the three outputs:
 
-1. **OK** (green) - requirement is met.
-1. **Warning** (orange) - test did not pass, but ActiveCollab does not require that environment option to run. Warnings are usually throw in case of missing extensions that are optional, but good to have, or in cases in early warning about deprecated functionality.
-1. **Error** (red) - requirement is not met and you will not be able to run ActiveCollab until you reconfigure your environment to support it. Errors are throw in case of missing extensions, or environment settings that will break ActiveCollab (like some unsupported opcode cache extensions).
+1. **OK** (🟢 green) - requirement is met.
+1. **Warning** (🟠 orange) - test did not pass, but ActiveCollab does not require that environment option to run. Warnings are usually throw in case of missing extensions that are optional, but good to have, or in cases in early warning about deprecated functionality.
+1. **Error** (🔴 red) - requirement is not met and you will not be able to run ActiveCollab until you reconfigure your environment to support it. Errors are throw in case of missing extensions, or environment settings that will break ActiveCollab (like some unsupported opcode cache extensions).
 
 That's it!
 
