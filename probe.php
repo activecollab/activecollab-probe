@@ -30,19 +30,19 @@ if (!empty($_GET) && array_key_exists('phpinfo', $_GET)) {
 
 // -- Please provide valid database connection parameters ------------------------------
 
-define('DB_HOST', ''); // Address of your MySQL server (usually localhost)
-define('DB_USER', ''); // Username that is used to connect to the server
-define('DB_PASS', ''); // User's password
-define('DB_NAME', ''); // Name of the database you are connecting to
+const DB_HOST = ''; // Address of your MySQL server (usually localhost)
+const DB_USER = ''; // Username that is used to connect to the server
+const DB_PASS = ''; // User's password
+const DB_NAME = ''; // Name of the database you are connecting to
 
 // -- No need to change anything below this line --------------------------------------
 
-define('PROBE_VERSION', '5.14');
-define('PROBE_FOR', 'ActiveCollab 5.14, 6.0 and newer');
+const PROBE_VERSION = '7.3';
+const PROBE_FOR = 'ActiveCollab 7.3 and newer';
 
-define('STATUS_OK', 'ok');
-define('STATUS_WARNING', 'warning');
-define('STATUS_ERROR', 'error');
+const STATUS_OK = 'ok';
+const STATUS_WARNING = 'warning';
+const STATUS_ERROR = 'error';
 
 class TestResult
 {
@@ -214,8 +214,8 @@ class TestResult
          */
         function validate_php(&$results)
         {
-            if (version_compare(PHP_VERSION, '7.1', '<')) {
-                $results[] = new TestResult('Minimum PHP version required in order to run ActiveCollab is PHP 7.1. Your PHP version: ' . PHP_VERSION . ' (<a href="probe.php?phpinfo" target="_blank">show info</a>)', STATUS_ERROR);
+            if (version_compare(PHP_VERSION, '8.0', '<')) {
+                $results[] = new TestResult('Minimum PHP version required in order to run ActiveCollab is PHP 8.0. Your PHP version: ' . PHP_VERSION . ' (<a href="probe.php?phpinfo" target="_blank">show info</a>)', STATUS_ERROR);
 
                 return false;
             } else {
@@ -336,7 +336,7 @@ class TestResult
             if (ctype_digit($val)) {
                 $last = '';
             } else {
-                $last = strtolower($val{strlen($val) - 1});
+                $last = strtolower(substr($val, strlen($val) - 1));
                 $val = substr($val, 0, strlen($val) - 1);
             }
 
@@ -610,6 +610,6 @@ if (function_exists('date_default_timezone_set')) {
 }
 
 ?>
-<p id="footer">&copy;2007&dash;<?php echo date('Y') ?>. <a href="https://activecollab.com">ActiveCollab, LLC</a>.</p>
+<p id="footer">&copy;2007&dash;<?php echo date('Y') ?>. <a href="https://activecollab.com">ActiveCollab, Inc</a>.</p>
 </body>
 </html>
