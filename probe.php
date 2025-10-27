@@ -470,7 +470,7 @@ class TestResult
         {
             if ($result = $link->query("SELECT @@thread_stack AS 'thread_stack'")) {
                 while ($row = $result->fetch_assoc()) {
-                    return (int) $row['thread_stack'] >= 262144; // 256kb
+                    return (int)$row['thread_stack'] >= 262144; // 256kb
                 }
             }
 
@@ -481,30 +481,59 @@ class TestResult
          * @param mysqli $link
          * @return array
          */
-        function check_trigger_permissions($link) {
+        function check_trigger_permissions($link)
+        {
             try {
-                $link->query("
+                $link->query('
                 CREATE TABLE IF NOT EXISTS `probe_test` (
                   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
                   `trigger_success` INT UNSIGNED NOT NULL DEFAULT 0
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-                ");
+                ');
 
-                $link->query("
-                CREATE TRIGGER IF NOT EXISTS probe_test_trigger
+                if ($link->error) {
+                    return ['ok' => false, 'message' => $link->error];
+                }
+
+                $link->query('
+                CREATE TRIGGER probe_test_trigger
                 AFTER INSERT ON `probe_test` 
                 FOR EACH ROW 
                 BEGIN 
                     UPDATE `probe_test` SET `trigger_success` = 1;
                 END
-                ");
+                ');
+
+                if ($link->error) {
+                    return ['ok' => false, 'message' => $link->error];
+                }
 
                 return ['ok' => true, 'message' => null];
-            } catch (Throwable $err) {
-                return ['ok' => false, 'message' => $err->getMessage()];
+            } catch (Throwable $e) {
+                return ['ok' => false, 'message' => $e->getMessage()];
             } finally {
-                $link->query("DROP TRIGGER IF EXISTS probe_test_trigger;");
-                $link->query("DROP TABLE IF EXISTS probe_test");
+                $link->query('DROP TRIGGER IF EXISTS probe_test_trigger;');
+                $link->query('DROP TABLE IF EXISTS probe_test');
+            }
+        }
+
+        /**
+         * @param mysqli $link
+         * @return array
+         */
+        function check_view_permissions($link) {
+            try {
+                $link->query('CREATE VIEW test_view AS SELECT 1 AS success;');
+
+                if ($link->error) {
+                    return ['ok' => false, 'message' => $link->error];
+                }
+
+                return ['ok' => true, 'message' => null];
+            } catch (Throwable $e) {
+                return ['ok' => false, 'message' => $e->getMessage()];
+            } finally {
+                $link->query('DROP VIEW IF EXISTS test_view');
             }
         }
 
@@ -585,12 +614,21 @@ class TestResult
                     $can_create_triggers = $check_trigger_permission_result['ok'];
 
                     if ($can_create_triggers) {
-                        $results[] = new TestResult("{$mysql_server} trigger permissions are enabled");
+                        $results[] = new TestResult("{$mysql_server} can create triggers");
                     } else {
-                        $results[] = new TestResult("{$mysql_server} trigger permissions are not enabled", STATUS_ERROR, $check_trigger_permission_result['message']);
+                        $results[] = new TestResult("{$mysql_server} can't create triggers", STATUS_ERROR, $check_trigger_permission_result['message']);
                         $mysql_ok = false;
                     }
 
+                    $check_view_permission_result = check_view_permissions($link);
+                    $can_create_views = $check_view_permission_result['ok'];
+
+                    if ($can_create_views) {
+                        $results[] = new TestResult("{$mysql_server} can create views");
+                    } else {
+                        $results[] = new TestResult("{$mysql_server} can't create views", STATUS_ERROR, $check_view_permission_result['message']);
+                        $mysql_ok = false;
+                    }
                 } else {
                     $results[] = new TestResult("{$mysql_server} {$min_mysql_server_version} or later is required. Your {$mysql_server} version is {$mysql_version}", STATUS_ERROR);
                     $mysql_ok = false;
