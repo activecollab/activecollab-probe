@@ -1,6 +1,6 @@
 # ActiveCollab Probe
 
-Use ``probe.php`` script to check if your system can run [ActiveCollab](https://www.activecollab.com/index.html) or not.
+Use ``probe.php`` script to check if your system can run [ActiveCollab](https://www.activecollab.com/) or not.
 
 Supported versions:
 
@@ -22,6 +22,11 @@ Each test can have one of the three outputs:
 1. **Error** (🔴 red) - requirement is not met and you will not be able to run ActiveCollab until you reconfigure your environment to support it. Errors are throw in case of missing extensions, or environment settings that will break ActiveCollab (like some unsupported opcode cache extensions).
 
 That's it!
+
+## Breaking Changes
+Between versions 7.3 and 8.0:
+- PHP 8.1 is now required
+- php memory_limit is now 512MB
 
 ## Remove when Done
 
