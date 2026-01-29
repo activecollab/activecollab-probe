@@ -4,7 +4,7 @@ Use ``probe.php`` script to check if your system can run [ActiveCollab](https://
 
 Supported versions:
 
-* ActiveCollab 7.3 and newer
+* ActiveCollab 8.0 and newer
 
 Detailed documentation on system's requirements is available [here](https://activecollab.com/help/books/self-hosted-activecollab/requirements).
 
