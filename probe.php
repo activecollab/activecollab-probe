@@ -37,8 +37,8 @@ const DB_NAME = ''; // Name of the database you are connecting to
 
 // -- No need to change anything below this line --------------------------------------
 
-const PROBE_VERSION = '7.3';
-const PROBE_FOR = 'ActiveCollab 7.3 and newer';
+const PROBE_VERSION = '8.0';
+const PROBE_FOR = 'ActiveCollab 8.0 and newer';
 
 const STATUS_OK = 'ok';
 const STATUS_WARNING = 'warning';
@@ -214,8 +214,8 @@ class TestResult
          */
         function validate_php(&$results)
         {
-            if (version_compare(PHP_VERSION, '8.0', '<')) {
-                $results[] = new TestResult('Minimum PHP version required in order to run ActiveCollab is PHP 8.0. Your PHP version: ' . PHP_VERSION . ' (<a href="probe.php?phpinfo" target="_blank">show info</a>)', STATUS_ERROR);
+            if (version_compare(PHP_VERSION, '8.1', '<')) {
+                $results[] = new TestResult('Minimum PHP version required in order to run ActiveCollab is PHP 8.1. Your PHP version: ' . PHP_VERSION . ' (<a href="probe.php?phpinfo" target="_blank">show info</a>)', STATUS_ERROR);
 
                 return false;
             } else {
@@ -237,12 +237,12 @@ class TestResult
 
             $formatted_memory_limit = $memory_limit === -1 ? 'unlimited' : format_file_size($memory_limit);
 
-            if ($memory_limit === -1 || $memory_limit >= 67108864) {
+            if ($memory_limit === -1 || $memory_limit >= 512 * 1048576) {
                 $results[] = new TestResult('Your memory limit is: ' . $formatted_memory_limit, STATUS_OK);
 
                 return true;
             } else {
-                $results[] = new TestResult('Your memory is too low to complete the installation. Minimal value is 64MB, and you have it set to ' . $formatted_memory_limit, STATUS_ERROR);
+                $results[] = new TestResult('Your memory is too low to complete the installation. Minimal value is 512MB, and you have it set to ' . $formatted_memory_limit, STATUS_ERROR);
 
                 return false;
             }
