@@ -25,7 +25,7 @@ That's it!
 
 ## Breaking Changes
 Between versions 7.3 and 8.0:
-- PHP 8.1 is now required
+- PHP 8.2 is now required
 - php memory_limit is now 512MB
 
 ## Remove when Done
