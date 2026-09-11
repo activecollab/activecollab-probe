@@ -3,7 +3,7 @@
 /**
  * ActiveCollab Probe
  *
- * Copyright (c) 2012 A51 d.o.o.
+ * Copyright (c) A51 d.o.o.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this
  * software and associated documentation files (the "Software"), to deal in the Software
@@ -214,8 +214,8 @@ class TestResult
          */
         function validate_php(&$results)
         {
-            if (version_compare(PHP_VERSION, '8.1', '<')) {
-                $results[] = new TestResult('Minimum PHP version required in order to run ActiveCollab is PHP 8.1. Your PHP version: ' . PHP_VERSION . ' (<a href="probe.php?phpinfo" target="_blank">show info</a>)', STATUS_ERROR);
+            if (version_compare(PHP_VERSION, '8.2', '<')) {
+                $results[] = new TestResult('Minimum PHP version required in order to run ActiveCollab is PHP 8.2. Your PHP version: ' . PHP_VERSION . ' (<a href="probe.php?phpinfo" target="_blank">show info</a>)', STATUS_ERROR);
 
                 return false;
             } else {
